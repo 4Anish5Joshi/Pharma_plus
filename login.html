@@ -8,110 +8,96 @@
     <link rel="shortcut icon" href="assets/images/common/fav.png" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/fontawsom-all.min.css" />
-
     <style>
-      /* ############   inline basic css ########### */
-
       body {
         font-family: Arial, sans-serif;
-        background-color: #00a13e;
         margin: 0;
         padding: 0;
-      }
-
-      .container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+        background-color: #29695a;
       }
-
-      .form {
-        width: 100%;
-        max-width: 300px;
-        background: #fff;
+      .container {
+        text-align: center;
+        border: 1px solid #ccc;
         padding: 20px;
-        border-radius: 8px;
+        max-width: 80%;
+        width: 400px;
+        background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-
-      h2 {
-        text-align: center;
-        margin-bottom: 20px;
+      .logo {
+        width: 150px;
+        height: auto;
+        margin-bottom: 7px;
       }
-
-      label {
-        display: block;
-        margin-bottom: 5px;
-      }
-
       input[type="text"],
-      input[type="password"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 15px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-
-      button[type="submit"] {
+      input[type="password"],
+      input[type="submit"] {
         width: 100%;
         padding: 10px;
-        border: none;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
         border-radius: 5px;
-        cursor: pointer;
-        background-color: #4caf50;
-        color: white;
+        box-sizing: border-box;
       }
 
-      button[type="submit"]:hover {
-        background-color: #45a049;
-      }
-
-      #trytosignup {
-        text-align: center;
-        margin-top: 15px;
-      }
-
-      #trytosignup a {
-        text-decoration: none;
-        color: #4caf50;
-      }
-      .img {
-        width: 25%;
-        padding-right: 1.5%;
-      }
-
-      @media screen and (max-width: 600px) {
-        .container {
-          flex-direction: column;
-        }
-      }
-      h3 {
-        text-align: center;
+      h4 {
+        padding: 15px 0 12px 0;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <img class="img" src="assets/images/common/logo.png" alt="logo" />
-
-      <form class="form" id="loginForm">
-        <div>
-          <a href="index.html"><i class="fas fa-home"></i> Home</a>
-          <h2>Pharma Plus</h2>
-        </div>
-        <h3>Login</h3>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
-
-        <button type="submit">Login</button>
-        <p id="trytosignup"><a href="signup.html">Create an Account</a></p>
+      <a href="index.html">
+        <img src="assets/images/common/logo.png" alt="Logo" class="logo" />
+      </a>
+      <form id="loginForm">
+        <h4>Login</h4>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+          required
+        /><br />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        /><br />
+        <input type="submit" value="Login" class="btn-success" />
       </form>
+      <p>No account? <a href="signup.html">Sign Up</a></p>
     </div>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get username and password
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+
+          // Check for regular user
+          if (username === "King_80*" && password === "Virat18@") {
+            alert("Successfully logged in as " + username);
+            window.location.href = "index.html"; // Redirect to index.html for regular users
+          }
+          // Check for admin
+          else if (username === "admin" && password === "admin") {
+            alert("Successfully logged in as " + username);
+            window.location.href = "admindb.html"; // Redirect to dashboard.html for admin
+          } else {
+            alert("Login failed. Please check your credentials.");
+          }
+        });
+    </script>
   </body>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </html>

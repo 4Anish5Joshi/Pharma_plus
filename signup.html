@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Favicon -->
-    <link rel="icon" href="img/favicon.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pharma Plus Signup</title>
@@ -11,109 +9,121 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/fontawsom-all.min.css" />
     <style>
-      /* ########## Inline Basic css ######### */
       body {
         font-family: Arial, sans-serif;
-        background-color: #00a13e;
         margin: 0;
         padding: 0;
-      }
-      .container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+        background-color: #29695a;
       }
-      .form {
-        width: 300px;
-        background: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-top: 70px;
-      }
-      h2 {
+      .container {
         text-align: center;
-        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        max-width: 80%;
+        width: 400px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-      label {
-        display: block;
-        margin-bottom: 5px;
+      .logo {
+        width: 150px;
+        height: auto;
+        margin-bottom: 7px;
       }
       input[type="text"],
       input[type="email"],
-      input[type="password"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 15px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-      button[type="submit"] {
+      input[type="password"],
+      input[type="date"],
+      input[type="submit"] {
         width: 100%;
         padding: 10px;
-        border: none;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
         border-radius: 5px;
-        cursor: pointer;
-        background-color: #4caf50;
-        color: white;
-      }
-      button[type="submit"]:hover {
-        background-color: #45a049;
-      }
-      #trytologin {
-        text-align: center;
-        margin-top: 15px;
-      }
-      #trytologin a {
-        text-decoration: none;
-        color: #4caf50;
-      }
-      .img {
-        width: 250px;
-      }
-      h2 {
-        padding-right: 200px;
-        padding-bottom: 20px;
+        box-sizing: border-box;
       }
 
-      h3 {
-        text-align: center;
+      h4 {
+        padding: 15px 0 12px 0;
       }
     </style>
   </head>
-
   <body>
     <div class="container">
-      <div>
-        <img class="img" src="assets/images/common/logo.png" alt="logo" />
-        <br />
-        <h2>Pharma Plus Signup</h2>
-      </div>
-      <form class="form" id="signupForm">
-        <div>
-          <a href="index.html"><i class="fas fa-home"></i> Home</a>
-        </div>
-        <h3>Sign Up</h3>
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" required />
+      <a href="index.html">
+        <img src="assets/images/common/logo.png" alt="Logo" class="logo" />
+      </a>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" required />
-
-        <label for="city">City:</label>
-        <input type="text" id="city" name="city" required />
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
-
-        <button type="submit">Sign Up</button>
-        <p id="trytologin"><a href="login.html">Already having Account</a></p>
+      <form
+        id="signupForm"
+        action=""
+        method="POST"
+        onsubmit="return validateForm()"
+      >
+        <h4>Signup</h4>
+        <input
+          type="text"
+          id="fullname"
+          name="fullname"
+          placeholder="Full Name"
+          required
+        /><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        /><br />
+        <input type="date" id="dob" name="dob" required /><br />
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="City"
+          required
+        /><br />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        /><br />
+        <input type="submit" value="Sign Up" class="btn-success" />
       </form>
+      <p>Already have an account? <a href="login.html">Login</a></p>
     </div>
+
+    <script>
+      function validateForm() {
+        var fullname = document.getElementById("fullname").value;
+        var email = document.getElementById("email").value;
+        var dob = document.getElementById("dob").value;
+        var city = document.getElementById("city").value;
+        var password = document.getElementById("password").value;
+
+        if (
+          fullname === "" ||
+          email === "" ||
+          dob === "" ||
+          city === "" ||
+          password === ""
+        ) {
+          alert("Please fill in all fields.");
+          return false;
+        }
+
+        setTimeout(() => {
+          alert("Account created successfully!");
+          window.location.href = "login.html"; // Redirect to login page
+        }, 1500); // Change this delay time as needed
+
+        return false; // Prevent default form submission
+      }
+    </script>
   </body>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </html>
